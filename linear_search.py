@@ -1,0 +1,3 @@
+def ls(arr, target):
+    
+    
