@@ -16,29 +16,28 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
 The distinct triplets are [-1,0,1] and [-1,-1,2].
 Notice that the order of the output and the order of the triplets does not matter."""
 
-#timelimit exceeded
+#accepted 
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
         res=[]
         nums.sort()
         for i, a in enumerate(nums):
-            if i>0 and nums[i]==a:
+            if i>0 and a==nums[i-1]:
                 continue
             l=i +1
             r=len(nums)-1
             while l<r:
                 threeSum= nums[i]+nums[l]+ nums[r]
                 if threeSum>0:
-                    r=-1
+                    r-=1
                 elif threeSum<0:
-                    l=+1
+                    l+=1
                 else:
-                    res.append(nums[i],nums[l],nums[r])
-                    l=+1
+                    res.append([nums[i],nums[l],nums[r]])
+                    l+=1
                     while l<r and nums[l]==nums[l-1]:
                         l+=1
-        return res
+        return res    
 
-#
 
         
