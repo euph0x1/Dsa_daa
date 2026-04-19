@@ -32,7 +32,7 @@ class Solution:
             r += 1
         return False
     
-#just check adjacent 
+#just check adjacent same complexity as the l,r pointer
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         for i in range(len(nums) - 1):
@@ -40,3 +40,26 @@ class Solution:
                 return True
         return False
 
+#hash set time: o (n) loop + o (1) set lookup
+#space: o( n ) due to set 
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        numsset = set()
+        for num in nums:
+            if num in numsset:
+                return True 
+            numsset.add(num)
+        return False 
+    
+#comparison
+#time : o (n ) as creating a set takes o (1) for each element
+#space : o(n)
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        if len(nums) == len(set(nums)):
+            return False
+        return True
+
+
+    
