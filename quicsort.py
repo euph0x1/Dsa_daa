@@ -345,13 +345,9 @@ Recurrence
 
 T(n)=T(n-1)+O(n)
 
-Time
+Time: O(n²)
 
-O(n²)
-
-Space
-
-O(n)
+Space: O(n)
 
 --------------------------------------------
 
