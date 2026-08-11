@@ -1,0 +1,458 @@
+# LOGIC LAWS — QUICK MEMORY SHEET
+# ================================
+# Topic: Propositional Logic + First-Order Logic (FOL)
+# Symbols:
+# ¬  = NOT / negation
+# ∧  = AND
+# ∨  = OR
+# →  = implication / conditional
+# ∀  = FOR ALL / EVERY
+# ∃  = THERE EXISTS / SOME
+
+# ------------------------------------------------
+# 1. BASIC LOGIC
+# ------------------------------------------------
+
+P ∧ Q
+# P AND Q
+# True only when BOTH P and Q are true.
+
+P ∨ Q
+# P OR Q
+# True when AT LEAST ONE of P or Q is true.
+
+¬P
+# NOT P
+# Reverses the truth value.
+
+P → Q
+# IF P, THEN Q
+# False ONLY when P = True and Q = False.
+
+
+# ------------------------------------------------
+# 2. TRUTH TABLES
+# ------------------------------------------------
+
+# AND
+#
+# P    Q    P ∧ Q
+# T    T      T
+# T    F      F
+# F    T      F
+# F    F      F
+
+# OR
+#
+# P    Q    P ∨ Q
+# T    T      T
+# T    F      T
+# F    T      T
+# F    F      F
+
+# CONDITIONAL
+#
+# P    Q    P → Q
+# T    T      T
+# T    F      F   <-- ONLY FALSE CASE
+# F    T      T
+# F    F      T
+
+
+# ------------------------------------------------
+# 3. DE MORGAN'S LAWS
+# ------------------------------------------------
+
+# LAW 1: NOT AND
+¬(P ∧ Q)  ≡  ¬P ∨ ¬Q
+
+# Memory:
+# AND changes to OR
+# NOT goes to each part
+
+
+# LAW 2: NOT OR
+¬(P ∨ Q)  ≡  ¬P ∧ ¬Q
+
+# Memory:
+# OR changes to AND
+# NOT goes to each part
+
+
+# GOLDEN MEMORY RULE:
+# When NOT enters parentheses:
+#
+#       AND <----> OR
+#
+# Flip the operator and negate each part.
+
+
+# ------------------------------------------------
+# 4. CONDITIONAL / IMPLICATION LAWS
+# ------------------------------------------------
+
+P → Q  ≡  ¬P ∨ Q
+
+# "If P, then Q" can be rewritten as:
+# "NOT P OR Q"
+
+
+# NEGATION OF CONDITIONAL
+¬(P → Q)  ≡  P ∧ ¬Q
+
+# Why?
+# P → Q is false only when:
+# P = TRUE
+# Q = FALSE
+#
+# Therefore its negation is:
+# P AND NOT Q
+
+
+# ------------------------------------------------
+# 5. QUANTIFIERS
+# ------------------------------------------------
+
+∀x P(x)
+# FOR EVERY x, P(x)
+# Think: ALL / EVERY
+
+
+∃x P(x)
+# THERE EXISTS an x such that P(x)
+# Think: SOME / AT LEAST ONE
+
+
+# ------------------------------------------------
+# 6. NEGATION OF UNIVERSAL QUANTIFIER
+# ------------------------------------------------
+
+¬(∀x P(x))  ≡  ∃x ¬P(x)
+
+# English:
+# "NOT everyone is P"
+# =
+# "There is SOMEONE who is NOT P."
+
+
+# Example:
+# P(x) = x passed the exam
+#
+# ∀x P(x)
+# = Everyone passed.
+#
+# ¬(∀x P(x))
+# = Not everyone passed.
+#
+# ∃x ¬P(x)
+# = Someone did not pass.
+
+
+# ------------------------------------------------
+# 7. NEGATION OF EXISTENTIAL QUANTIFIER
+# ------------------------------------------------
+
+¬(∃x P(x))  ≡  ∀x ¬P(x)
+
+# English:
+# "There does NOT exist someone who is P"
+# =
+# "EVERYONE is NOT P."
+
+
+# Example:
+# ∃x Student(x)
+# = At least one student exists.
+#
+# ¬(∃x Student(x))
+# = No student exists.
+#
+# ∀x ¬Student(x)
+# = Everyone is not a student.
+
+
+# ------------------------------------------------
+# 8. QUANTIFIER MEMORY RULE
+# ------------------------------------------------
+
+# When NOT crosses a quantifier:
+#
+#       ∀  <---->  ∃
+#
+# AND negate the predicate.
+
+
+# SUPER IMPORTANT:
+#
+# ¬∀  =  ∃¬
+# ¬∃  =  ∀¬
+
+
+# ------------------------------------------------
+# 9. "EVERY" STATEMENTS IN FIRST-ORDER LOGIC
+# ------------------------------------------------
+
+# "Every student passed."
+#
+# Correct:
+∀x(Student(x) → Passed(x))
+
+# NOT:
+∀x(Student(x) ∧ Passed(x))
+#
+# Why?
+# We mean:
+# For every x, IF x is a student, THEN x passed.
+
+
+# ------------------------------------------------
+# 10. NEGATING "EVERY STUDENT PASSED"
+# ------------------------------------------------
+
+# Original:
+∀x(Student(x) → Passed(x))
+
+# Negate:
+¬∀x(Student(x) → Passed(x))
+
+# Step 1: Flip ∀ to ∃
+∃x ¬(Student(x) → Passed(x))
+
+# Step 2: Negate conditional
+¬(P → Q) = P ∧ ¬Q
+
+# Final:
+∃x(Student(x) ∧ ¬Passed(x))
+
+# English:
+# "There exists a student who did not pass."
+
+
+# ------------------------------------------------
+# 11. "SOME" STATEMENTS
+# ------------------------------------------------
+
+# "Some student passed."
+#
+∃x(Student(x) ∧ Passed(x))
+
+# Means:
+# At least one person is both:
+# 1. A student
+# 2. Passed
+
+
+# Negation:
+¬∃x(Student(x) ∧ Passed(x))
+
+# Step 1:
+∀x ¬(Student(x) ∧ Passed(x))
+
+# Step 2: De Morgan
+∀x(¬Student(x) ∨ ¬Passed(x))
+
+
+# ------------------------------------------------
+# 12. COMMON ENGLISH ↔ LOGIC
+# ------------------------------------------------
+
+# Everyone is P
+∀x P(x)
+
+# Someone is P
+∃x P(x)
+
+# No one is P
+¬∃x P(x)
+# Equivalent:
+∀x ¬P(x)
+
+# Not everyone is P
+¬∀x P(x)
+# Equivalent:
+∃x ¬P(x)
+
+# Everyone is NOT P
+∀x ¬P(x)
+
+# Someone is NOT P
+∃x ¬P(x)
+
+
+# ------------------------------------------------
+# 13. COMPLETE FORMULA CHEAT SHEET
+# ------------------------------------------------
+
+# Double Negation
+¬¬P  ≡  P
+
+# De Morgan 1
+¬(P ∧ Q)  ≡  ¬P ∨ ¬Q
+
+# De Morgan 2
+¬(P ∨ Q)  ≡  ¬P ∧ ¬Q
+
+# Conditional
+P → Q  ≡  ¬P ∨ Q
+
+# Negated Conditional
+¬(P → Q)  ≡  P ∧ ¬Q
+
+# Universal Negation
+¬(∀x P(x))  ≡  ∃x ¬P(x)
+
+# Existential Negation
+¬(∃x P(x))  ≡  ∀x ¬P(x)
+
+
+# ------------------------------------------------
+# 14. THE 3 GOLDEN RULES
+# ------------------------------------------------
+
+# RULE 1:
+# NOT entering parentheses:
+#
+#       AND ↔ OR
+#
+# Example:
+¬(P ∧ Q)
+# becomes:
+¬P ∨ ¬Q
+
+
+# RULE 2:
+# NOT crossing a quantifier:
+#
+#       ∀ ↔ ∃
+#
+# Example:
+¬∀x P(x)
+# becomes:
+∃x ¬P(x)
+
+
+# RULE 3:
+# NOT of conditional:
+#
+#       ¬(P → Q) = P ∧ ¬Q
+
+
+# ------------------------------------------------
+# 15. HOW TO SOLVE ANY NEGATION QUESTION
+# ------------------------------------------------
+
+# STEP 1:
+# Find the outermost operator.
+
+# STEP 2:
+# If it is ∀, change it to ∃.
+# If it is ∃, change it to ∀.
+
+# STEP 3:
+# If it is AND, change it to OR.
+# If it is OR, change it to AND.
+
+# STEP 4:
+# Push NOT inward and negate each part.
+
+# STEP 5:
+# If you see:
+# ¬(P → Q)
+# immediately replace it with:
+# P ∧ ¬Q
+
+
+# ------------------------------------------------
+# 16. PRACTICE EXAMPLES
+# ------------------------------------------------
+
+# Example 1
+¬(P ∧ Q)
+# Answer:
+¬P ∨ ¬Q
+
+
+# Example 2
+¬(P ∨ Q)
+# Answer:
+¬P ∧ ¬Q
+
+
+# Example 3
+¬(P → Q)
+# Answer:
+P ∧ ¬Q
+
+
+# Example 4
+¬(∀x P(x))
+# Answer:
+∃x ¬P(x)
+
+
+# Example 5
+¬(∃x P(x))
+# Answer:
+∀x ¬P(x)
+
+
+# Example 6
+¬(∀x(P(x) → Q(x)))
+#
+# Step 1:
+∃x ¬(P(x) → Q(x))
+#
+# Step 2:
+∃x(P(x) ∧ ¬Q(x))
+#
+# FINAL:
+∃x(P(x) ∧ ¬Q(x))
+
+
+# ------------------------------------------------
+# 17. ONE-PAGE MEMORY MAP
+# ------------------------------------------------
+
+#                 NEGATION
+#                    |
+#          +---------+---------+
+#          |                   |
+#       LOGICAL             QUANTIFIER
+#       OPERATORS
+#          |                   |
+#      +---+---+           +---+---+
+#      |       |           |       |
+#     AND     OR           ∀       ∃
+#      |       |           |       |
+#      v       v           v       v
+#     OR      AND          ∃       ∀
+#                         (with NOT)
+#
+# Conditional:
+#
+# P → Q = ¬P ∨ Q
+#
+# NOT conditional:
+#
+# ¬(P → Q) = P ∧ ¬Q
+
+
+# ------------------------------------------------
+# FINAL THING TO MEMORIZE
+# ------------------------------------------------
+
+# NOT + AND  →  OR + NOT
+# NOT + OR   →  AND + NOT
+# NOT + ∀    →  ∃ + NOT
+# NOT + ∃    →  ∀ + NOT
+# NOT + →    →  P ∧ NOT Q
+
+# In short:
+#
+# AND ↔ OR
+# ∀ ↔ ∃
+# Conditional negation → P ∧ ¬Q
+#
+# Always push the NOT inward.
+
+
