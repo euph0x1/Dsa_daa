@@ -174,7 +174,7 @@ Space : O(1)
 
 -----------------------------------------
 
-Worst Case
+Worst Case: 
 
 Reverse Sorted
 
