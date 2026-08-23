@@ -102,7 +102,6 @@ Elements are randomly ordered
 
 Time = O(n²)
 
-
 WORST CASE:
 Array is reverse sorted
 
