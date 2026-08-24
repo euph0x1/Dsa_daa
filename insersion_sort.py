@@ -98,6 +98,7 @@ Time = O(n)
 
 
 AVERAGE CASE:
+
 Elements are randomly ordered
 
 Time = O(n²)
